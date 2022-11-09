@@ -3,6 +3,7 @@
 <!--  <HelloWorld msg="Welcome to Your Vue.js App"/>-->
   <MyHeader></MyHeader>
   <EnterSearch></EnterSearch>
+  <SideBar></SideBar>
   <WordsDisplay></WordsDisplay>
   This is main page
 </template>
@@ -12,12 +13,14 @@
 import MyHeader from "@/components/Header";
 import WordsDisplay from "@/components/WordsDisplay";
 import EnterSearch from "@/components/EnterSearch";
+import SideBar from "@/components/SideBar";
 export default {
   name: 'App',
   components: {
     MyHeader,
     WordsDisplay,
-    EnterSearch
+    EnterSearch,
+    SideBar
   }
 }
 </script>
