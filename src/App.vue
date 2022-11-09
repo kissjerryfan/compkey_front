@@ -2,17 +2,22 @@
 <!--  <img alt="Vue logo" src="./assets/logo.png">-->
 <!--  <HelloWorld msg="Welcome to Your Vue.js App"/>-->
   <MyHeader></MyHeader>
+  <EnterSearch></EnterSearch>
+  <WordsDisplay></WordsDisplay>
   This is main page
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import MyHeader from "@/components/Header";
-
+import WordsDisplay from "@/components/WordsDisplay";
+import EnterSearch from "@/components/EnterSearch";
 export default {
   name: 'App',
   components: {
-    MyHeader
+    MyHeader,
+    WordsDisplay,
+    EnterSearch
   }
 }
 </script>
