@@ -1,2 +1,2 @@
-import Vue from "vue"
-export default new Vue()
+import {createApp} from 'vue'
+export const eventBus = createApp()
