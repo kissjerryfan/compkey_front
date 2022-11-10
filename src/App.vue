@@ -15,9 +15,10 @@
     <el-col :span="18">
       <WordsDisplay></WordsDisplay>
     </el-col>
-    <el-col :span="6">
+    <el-col :span="5.8">
       <SideBar></SideBar>
     </el-col>
+    <el-col :span="0.2"></el-col>
   </el-row>
   <el-row>
     <el-col :span="18">

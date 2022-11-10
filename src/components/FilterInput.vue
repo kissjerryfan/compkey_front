@@ -4,7 +4,7 @@
   </div>
   <div>
     <p>根据文本过滤竞争词</p>
-    <el-input v-model="input" placeholder="Please input" clearable style="width: 140px"/>
+    <el-input v-model="input" placeholder="Please input" clearable style="width: 200px"/>
     <el-button type="primary" id="include-btn">Include</el-button>
     <el-button type="danger" id="exclude-btn">Exclude</el-button>
   </div>
@@ -12,8 +12,21 @@
 </template>
 
 <script>
+import eventBus from "@/components/eventBus";
 export default {
-  name: "FilterInput"
+  name: "FilterInput",
+  data(){
+    return {
+      filter: {
+
+      }
+    }
+  },
+  methods: {
+    sendFilter(){
+      eventBus.$emit("getFilter", this.filter)
+    }
+  }
 }
 </script>
 <script setup>
@@ -30,16 +43,20 @@ const input = ref('')
   margin-left: 0;
 }
 
-el-input{
+.el-input{
   /*text-align: right;*/
   height: auto;
-  width: 100px;
+  width: 200px;
 }
 
 #top-color{
   box-sizing: content-box;
-  height: 10px;
-  background-color: #6666;
+  height: 3px;
+  background-color: #434343;
+}
+
+p{
+  text-align: left;
 }
 
 </style>

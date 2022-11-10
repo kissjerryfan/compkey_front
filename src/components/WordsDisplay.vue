@@ -11,8 +11,21 @@
 </template>
 
 <script>
+import eventBus from "@/components/eventBus";
 export default {
-  name: "WordsDisplay"
+  name: "WordsDisplay",
+  data(){
+    return {
+      filter:{}
+    }
+  },
+  methods:{
+    getFilter(){
+      eventBus.$on("getFilter", (data)=>{
+          this.filter = data;
+      })
+    }
+  }
 }
 </script>
 
