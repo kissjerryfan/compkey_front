@@ -7,15 +7,10 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCol: typeof import('element-plus/es')['ElCol']
-    ElContainer: typeof import('element-plus/es')['ElContainer']
     ElEmpty: typeof import('element-plus/es')['ElEmpty']
-    ElHeader: typeof import('element-plus/es')['ElHeader']
     ElInput: typeof import('element-plus/es')['ElInput']
-    ElInputNumber: typeof import('element-plus/es')['ElInputNumber']
-    ElMain: typeof import('element-plus/es')['ElMain']
     ElRow: typeof import('element-plus/es')['ElRow']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
@@ -24,8 +19,8 @@ declare module '@vue/runtime-core' {
     Header: typeof import('./src/components/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     InformationTable: typeof import('./src/components/InformationTable.vue')['default']
+    MainDisplay: typeof import('./src/components/MainDisplay.vue')['default']
     MyList: typeof import('./src/components/MyList.vue')['default']
     SideBar: typeof import('./src/components/SideBar.vue')['default']
-    WordsDisplay: typeof import('./src/components/WordsDisplay.vue')['default']
   }
 }

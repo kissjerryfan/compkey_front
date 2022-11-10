@@ -1,48 +1,23 @@
 <template>
   <el-table :data="tableData" height="250" style="width: 100%">
-    <el-table-column prop="date" label="Date" width="180" />
-    <el-table-column prop="name" label="Name" width="180" />
-    <el-table-column prop="address" label="Address" />
+    <el-table-column prop="seedWords" label="SeedWords" width="180" />
+    <el-table-column prop="compWords" label="CompWords" width="180" />
+    <el-table-column prop="comp" label="Comp" />
   </el-table>
 </template>
 
 <script setup>
 const tableData = [
   {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    seedWords: '中国',
+    compWords: '中国',
+    comp: '0.98',
   },
   {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-08',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-06',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-07',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
+    seedWords: '中国',
+    compWords: '美国',
+    comp: '0.9',
+  }
 ]
 </script>
 <script>

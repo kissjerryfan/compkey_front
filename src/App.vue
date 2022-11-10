@@ -7,41 +7,29 @@
     </el-col>
   </el-row>
   <el-row>
-    <el-col :span="24">
-      <EnterSearch></EnterSearch>
-    </el-col>
-  </el-row>
-  <el-row>
     <el-col :span="18">
-      <WordsDisplay></WordsDisplay>
+      <MainDisplay></MainDisplay>
     </el-col>
     <el-col :span="5.8">
       <SideBar></SideBar>
     </el-col>
     <el-col :span="0.2"></el-col>
   </el-row>
-  <el-row>
-    <el-col :span="18">
-      <InformationTable></InformationTable>
-    </el-col>
-  </el-row>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import MyHeader from "@/components/Header";
-import WordsDisplay from "@/components/WordsDisplay";
 import EnterSearch from "@/components/EnterSearch";
 import SideBar from "@/components/SideBar";
-import InformationTable from "@/components/InformationTable";
+import MainDisplay from "@/components/MainDisplay";
 export default {
   name: 'App',
   components: {
     MyHeader,
-    WordsDisplay,
     EnterSearch,
     SideBar,
-    InformationTable
+    MainDisplay
   }
 }
 </script>
