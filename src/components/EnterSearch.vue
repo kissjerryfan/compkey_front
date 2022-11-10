@@ -1,17 +1,17 @@
 <template>
-  <el-input v-model="input" placeholder="Please input" clearable/>
+  <el-input-number v-model="num" :step="2" step-strictly />
 </template>
 
 <script setup>
-import {ref} from 'vue'
-
-const input = ref('')
+import { ref } from 'vue'
+const num = ref(2)
 </script>
 <script>
 export default {
   name: "EnterSearch"
 }
 </script>
+
 
 <style scoped>
 
