@@ -20,6 +20,11 @@
     </el-col>
     <el-col :span="0.2"></el-col>
   </el-row>
+  <el-row>
+    <el-col :span="18">
+      <InformationTable></InformationTable>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
@@ -28,13 +33,15 @@ import MyHeader from "@/components/Header";
 import WordsDisplay from "@/components/WordsDisplay";
 import EnterSearch from "@/components/EnterSearch";
 import SideBar from "@/components/SideBar";
+import InformationTable from "@/components/InformationTable";
 export default {
   name: 'App',
   components: {
     MyHeader,
     WordsDisplay,
     EnterSearch,
-    SideBar
+    SideBar,
+    InformationTable
   }
 }
 </script>
