@@ -1,5 +1,5 @@
 <template>
-  <FilterInput style="width: 50px"></FilterInput>
+  <FilterInput style="margin-bottom: 20px; position: absolute"></FilterInput>
   <MyList></MyList>
 </template>
 
