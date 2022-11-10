@@ -1,11 +1,24 @@
 <template>
 <!--  <img alt="Vue logo" src="./assets/logo.png">-->
 <!--  <HelloWorld msg="Welcome to Your Vue.js App"/>-->
-  <MyHeader></MyHeader>
-  <EnterSearch></EnterSearch>
-  <SideBar></SideBar>
-  <WordsDisplay></WordsDisplay>
-  This is main page
+  <el-row>
+    <el-col :span="24">
+      <MyHeader></MyHeader>
+    </el-col>
+  </el-row>
+  <el-row>
+    <el-col :span="24">
+      <EnterSearch></EnterSearch>
+    </el-col>
+  </el-row>
+  <el-row>
+    <el-col :span="18">
+      <WordsDisplay></WordsDisplay>
+    </el-col>
+    <el-col :span="6">
+      <SideBar></SideBar>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
