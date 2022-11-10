@@ -1,8 +1,8 @@
 <template>
   <el-table :data="tableData" height="250" style="width: 100%">
-    <el-table-column prop="seed" label="seed" width="180" />
-    <el-table-column prop="compWord" label="compWord" width="180" />
-    <el-table-column prop="comp" label="comp" />
+    <el-table-column prop="date" label="Date" width="180" />
+    <el-table-column prop="name" label="Name" width="180" />
+    <el-table-column prop="address" label="Address" />
   </el-table>
 </template>
 
