@@ -1,4 +1,6 @@
 <template>
+  <p>根据文本过滤竞争词</p>
+
   <el-button type="primary" id="include-btn">Include</el-button>
   <el-button type="danger" id="exclude-btn">Exclude</el-button>
 </template>
@@ -11,7 +13,10 @@ export default {
 
 <style scoped>
 #include-btn{
-  padding-right: 0px;
+  margin-right: 0;
+}
+#exclude-btn{
+  margin-left: 0;
 }
 
 </style>
