@@ -1,5 +1,5 @@
 <template>
-  <FilterInput></FilterInput>
+  <FilterInput style="width: 50px"></FilterInput>
   <MyList></MyList>
 </template>
 
@@ -16,6 +16,11 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+//FilterInput{
+//  display: flex;
+//  position: absolute;
+//  right: 0px;
+//  width: 80px;
+//}
 </style>
