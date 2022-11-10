@@ -1,10 +1,10 @@
 <template>
-  <el-input-number v-model="num" :step="2" step-strictly />
+  <el-input v-model="input" placeholder="请输入要搜索的信息" clearable />
 </template>
 
 <script setup>
-import { ref } from 'vue'
-const num = ref(2)
+  import { ref } from 'vue'
+  const input = ref('')
 </script>
 <script>
 export default {
