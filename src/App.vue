@@ -18,13 +18,12 @@
     <el-col :span="17">
       <InformationTable class="informationTable"></InformationTable>
     </el-col>
-    <el-col :span="1">
+    <el-col :span="1" class="nothing">
 
     </el-col>
-    <el-col :span="5.8">
+    <el-col :span="6">
       <SideBar class="sideBar"></SideBar>
     </el-col>
-    <el-col :span="0.2"></el-col>
   </el-row>
 </template>
 

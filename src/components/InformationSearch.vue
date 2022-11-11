@@ -1,5 +1,5 @@
 <template>
-  <el-button type="primary" plain>Search</el-button>
+  <el-button type="primary" size="large" plain>Search</el-button>
 </template>
 
 <script>

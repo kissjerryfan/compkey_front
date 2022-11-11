@@ -2,10 +2,10 @@
   <div id="top-color">
 
   </div>
-  <el-table :data="tableData" @row-click="handleTableRow" height="612" style="width: 100%">
+  <el-table :data="tableData" @row-click="handleTableRow" height="604" style="width: 100%">
     <el-table-column prop="seedWords" label="SeedWords" width="700" />
     <el-table-column prop="compWords" label="CompWords" width="180" />
-    <el-table-column prop="comp" label="Comp" />
+    <el-table-column prop="comp" label="Comp" width="100"/>
   </el-table>
 </template>
 
@@ -119,6 +119,7 @@ export default {
   #top-color{
     box-sizing: content-box;
     height: 3px;
+    width: 1008px;
     background-color: #434343;
   }
 </style>
