@@ -119,7 +119,7 @@ export default {
   #top-color{
     box-sizing: content-box;
     height: 3px;
-    width: 1008px;
+    width: 1020px;
     background-color: #434343;
   }
 </style>
