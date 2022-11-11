@@ -17,16 +17,28 @@
 
 <script>
 import {
-getCurrentInstance
+  defineComponent,
+  getCurrentInstance,
+  reactive,
+  toRefs,
+  onMounted,
+  onUnmounted
 } from 'vue'
 export default {
   setup(){
     const {ctx} = getCurrentInstance()
-
-    ctx.mittBus.on('comp_key', data =>{
-      this.compList = data
-      // console.log(this.compList)
+    onMounted(()=>{
+      ctx.mittBus.on('comp_key', (data)=>{
+        this.compList = data;
+        let res = {'word' : data.seedWords}
+        this.word_list.push(res)
+      })
     })
+    onUnmounted(()=>{
+      // 离开时销毁
+      ctx.mittBus.off("update")
+    })
+
   },
   name: "MyList",
   data() {
