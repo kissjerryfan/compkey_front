@@ -16,15 +16,30 @@
 </template>
 
 <script>
+import {
+getCurrentInstance
+} from 'vue'
 export default {
+  setup(){
+    const {ctx} = getCurrentInstance()
+
+    ctx.mittBus.on('comp_key', data =>{
+      this.compList = data
+      // console.log(this.compList)
+    })
+  },
   name: "MyList",
   data() {
     return {
       word_list: [
         // {word: "a"},
         // {word: "b"}
-      ]
+      ],
+      compList : []
     }
+  },
+  mounted() {
+
   }
 }
 </script>

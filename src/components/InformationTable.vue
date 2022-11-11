@@ -89,7 +89,11 @@ const tableData = [
 ]
 </script>
 <script>
+import { getCurrentInstance } from 'vue'
 export default {
+  setup(){
+
+  },
   name: "InformationTable",
   data() {
     return {
@@ -103,6 +107,8 @@ export default {
       compList.seedWords = row.seedWords
       compList.compWords = row.compWords
       compList.comp = row.comp
+      const {proxy} = getCurrentInstance()
+      proxy.mittBus.emit('comp_key', compList)
     }
   }
 }

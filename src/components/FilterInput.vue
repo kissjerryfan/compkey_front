@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import eventBus from "@/components/eventBus";
 export default {
   name: "FilterInput",
   data(){
@@ -23,9 +22,7 @@ export default {
     }
   },
   methods: {
-    sendFilter(){
-      eventBus.$emit("getFilter", this.filter)
-    }
+
   }
 }
 </script>
