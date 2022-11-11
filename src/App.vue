@@ -5,14 +5,13 @@
     </el-col>
   </el-row>
   <el-row class="search">
-    <el-col :span="11" class="input">
+    <el-col :span="8" class="input">
       <EnterSearch></EnterSearch>
     </el-col>
-    <el-col :span="4" class="searchBtn">
-      <InformationSearch></InformationSearch>
+    <el-col :span="4">
+      <InformationSearch class="searchBtn"></InformationSearch>
     </el-col>
     <el-col :span="7">
-
     </el-col>
   </el-row>
   <el-row>
@@ -73,7 +72,7 @@ body{
 }
 
 .searchBtn{
-  margin-left: 200px;
+  margin-left: 100px;
 }
 
 body{
