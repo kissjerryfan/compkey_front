@@ -1,25 +1,23 @@
 <template>
-<!--  <img alt="Vue logo" src="./assets/logo.png">-->
-<!--  <HelloWorld msg="Welcome to Your Vue.js App"/>-->
   <el-row>
     <el-col :span="24">
       <MyHeader></MyHeader>
     </el-col>
   </el-row>
-  <el-row>
+  <el-row class="search">
     <el-col :span="12">
-      <EnterSearch></EnterSearch>
+      <EnterSearch class="input"></EnterSearch>
     </el-col>
     <el-col :span="4">
-      <InformationSearch></InformationSearch>
+      <InformationSearch class="searchBtn"></InformationSearch>
     </el-col>
   </el-row>
   <el-row>
     <el-col :span="18">
-      <InformationTable></InformationTable>
+      <InformationTable class="informationTable"></InformationTable>
     </el-col>
     <el-col :span="5.8">
-      <SideBar></SideBar>
+      <SideBar class="sideBar"></SideBar>
     </el-col>
     <el-col :span="0.2"></el-col>
   </el-row>
@@ -53,6 +51,19 @@ export default {
   color: #2c3e50;
   margin-top: 0px;
   padding-top: 0;
+}
+
+.search {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.input{
+  margin-left: 250px;
+}
+
+.searchBtn{
+  margin-left: 270px;
 }
 
 body{
