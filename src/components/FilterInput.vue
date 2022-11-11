@@ -3,8 +3,8 @@
 
   </div>
   <div>
-    <p>根据文本过滤竞争词</p>
-    <el-input v-model="input" placeholder="Please input" clearable style="width: 180px;"/>
+    <p>过滤竞争词</p>
+    <el-input v-model="input" placeholder="请输入过滤词" clearable style="width: 180px;"/>
     <el-button type="primary" id="include-btn" style="margin-left: 13px">Include</el-button>
     <el-button type="danger" id="exclude-btn">Exclude</el-button>
   </div>
