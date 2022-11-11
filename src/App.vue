@@ -5,16 +5,22 @@
     </el-col>
   </el-row>
   <el-row class="search">
-    <el-col :span="12">
+    <el-col :span="11">
       <EnterSearch class="input"></EnterSearch>
     </el-col>
     <el-col :span="4">
       <InformationSearch class="searchBtn"></InformationSearch>
     </el-col>
+    <el-col :span="7">
+
+    </el-col>
   </el-row>
   <el-row>
-    <el-col :span="18">
+    <el-col :span="17">
       <InformationTable class="informationTable"></InformationTable>
+    </el-col>
+    <el-col :span="1">
+
     </el-col>
     <el-col :span="5.8">
       <SideBar class="sideBar"></SideBar>
@@ -51,6 +57,10 @@ export default {
   color: #2c3e50;
   margin-top: 0px;
   padding-top: 0;
+}
+
+body{
+  background-color: #f7f8fa;
 }
 
 .search {

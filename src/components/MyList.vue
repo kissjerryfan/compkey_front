@@ -21,8 +21,8 @@ export default {
   data() {
     return {
       word_list: [
-        {word: "a"},
-        {word: "b"}
+        // {word: "a"},
+        // {word: "b"}
       ]
     }
   }
