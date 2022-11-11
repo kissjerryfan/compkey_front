@@ -20,14 +20,12 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import MyHeader from "@/components/Header";
-import EnterSearch from "@/components/EnterSearch";
 import SideBar from "@/components/SideBar";
 import MainDisplay from "@/components/MainDisplay";
 export default {
   name: 'App',
   components: {
     MyHeader,
-    EnterSearch,
     SideBar,
     MainDisplay
   }
