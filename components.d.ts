@@ -18,8 +18,8 @@ declare module '@vue/runtime-core' {
     FilterInput: typeof import('./src/components/FilterInput.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    InformationSearch: typeof import('./src/components/InformationSearch.vue')['default']
     InformationTable: typeof import('./src/components/InformationTable.vue')['default']
-    MainDisplay: typeof import('./src/components/MainDisplay.vue')['default']
     MyList: typeof import('./src/components/MyList.vue')['default']
     SideBar: typeof import('./src/components/SideBar.vue')['default']
   }

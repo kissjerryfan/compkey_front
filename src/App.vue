@@ -7,8 +7,16 @@
     </el-col>
   </el-row>
   <el-row>
+    <el-col :span="12">
+      <EnterSearch></EnterSearch>
+    </el-col>
+    <el-col :span="4">
+      <InformationSearch></InformationSearch>
+    </el-col>
+  </el-row>
+  <el-row>
     <el-col :span="18">
-      <MainDisplay></MainDisplay>
+      <InformationTable></InformationTable>
     </el-col>
     <el-col :span="5.8">
       <SideBar></SideBar>
@@ -21,13 +29,17 @@
 // import HelloWorld from './components/HelloWorld.vue'
 import MyHeader from "@/components/Header";
 import SideBar from "@/components/SideBar";
-import MainDisplay from "@/components/MainDisplay";
+import InformationTable from "@/components/InformationTable";
+import EnterSearch from "@/components/EnterSearch";
+import InformationSearch from "@/components/InformationSearch";
 export default {
   name: 'App',
   components: {
     MyHeader,
     SideBar,
-    MainDisplay
+    InformationTable,
+    EnterSearch,
+    InformationSearch
   }
 }
 </script>
