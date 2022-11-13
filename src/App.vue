@@ -1,49 +1,80 @@
 <template>
   <el-row>
     <el-col :span="24">
-      <MyHeader></MyHeader>
+      <div id="header">
+        <img src="../src/assets/logo1.png" style="height: 45px; float: left; position: absolute; left: 15px; top: 17px;">
+      </div>
     </el-col>
   </el-row>
   <el-row class="search">
     <el-col :span="8" class="input">
-      <EnterSearch></EnterSearch>
+      <el-input v-model="input" size="large" placeholder="请输入要搜索的信息" clearable />
     </el-col>
     <el-col :span="4">
-      <InformationSearch class="searchBtn"></InformationSearch>
+      <el-button type="primary" size="large" plain>Search</el-button>
     </el-col>
     <el-col :span="7">
     </el-col>
   </el-row>
   <el-row>
     <el-col :span="17">
-      <InformationTable class="informationTable"></InformationTable>
+      <div id="top-color">
+
+      </div>
+      <el-table :data="tableData" @row-click="handleTableRow" height="604" style="width: 100%">
+        <el-table-column prop="seedWords" label="SeedWords" width="700" />
+        <el-table-column prop="compWords" label="CompWords" width="180" />
+        <el-table-column prop="comp" label="Comp" width="100"/>
+      </el-table>
     </el-col>
     <el-col :span="1" class="nothing">
 
     </el-col>
     <el-col :span="6">
-      <SideBar class="sideBar"></SideBar>
+      <div id="top-color">
+
+      </div>
+      <div>
+        <p>过滤竞争词</p>
+        <el-input v-model="input" placeholder="请输入过滤词" clearable style="width: 180px;"/>
+        <el-button type="primary" id="include-btn" style="margin-left: 13px">Include</el-button>
+        <el-button type="danger" id="exclude-btn">Exclude</el-button>
+      </div>
+      <div id="top-color">
+
+      </div>
+      <el-row>
+        <div id="header">
+          My List:
+        </div>
+      </el-row>
+      <el-row>
+        <el-empty description="点击关键词以添加到列表" style="width: 350px;" v-if="word_list.length === 0"/>
+        <el-table :data="word_list" stripe style="width: 350px" v-else>
+          <el-table-column prop="word" label="WordList" style="width: content-box"/>
+        </el-table>
+      </el-row>
     </el-col>
   </el-row>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import MyHeader from "@/components/Header";
-import SideBar from "@/components/SideBar";
-import InformationTable from "@/components/InformationTable";
-import EnterSearch from "@/components/EnterSearch";
-import InformationSearch from "@/components/InformationSearch";
 export default {
   name: 'App',
   components: {
-    MyHeader,
-    SideBar,
-    InformationTable,
-    EnterSearch,
-    InformationSearch
+
+  },
+  data : function (){
+    return {
+      word_list : [{word: "a"}]
+    }
   }
 }
+</script>
+<script setup>
+import { ref } from 'vue'
+const input = ref('')
 </script>
 
 <style>
