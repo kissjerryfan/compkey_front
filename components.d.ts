@@ -17,7 +17,6 @@ declare module '@vue/runtime-core' {
     EnterSearch: typeof import('./src/components/EnterSearch.vue')['default']
     FilterInput: typeof import('./src/components/FilterInput.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     InformationSearch: typeof import('./src/components/InformationSearch.vue')['default']
     InformationTable: typeof import('./src/components/InformationTable.vue')['default']
     MyList: typeof import('./src/components/MyList.vue')['default']

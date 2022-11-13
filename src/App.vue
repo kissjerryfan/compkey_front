@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :span="24">
-      <div id="header">
+      <div id="header1">
         <img src="../src/assets/logo1.png" style="height: 45px; float: left; position: absolute; left: 15px; top: 17px;">
       </div>
     </el-col>
@@ -18,7 +18,7 @@
   </el-row>
   <el-row>
     <el-col :span="17">
-      <div id="top-color">
+      <div id="top-color1">
 
       </div>
       <el-table :data="tableData" @row-click="handleTableRow" height="604" style="width: 100%">
@@ -31,7 +31,7 @@
 
     </el-col>
     <el-col :span="6">
-      <div id="top-color">
+      <div id="top-color2">
 
       </div>
       <div>
@@ -40,11 +40,11 @@
         <el-button type="primary" id="include-btn" style="margin-left: 13px">Include</el-button>
         <el-button type="danger" id="exclude-btn">Exclude</el-button>
       </div>
-      <div id="top-color">
+      <div id="top-color3">
 
       </div>
       <el-row>
-        <div id="header">
+        <div id="header2">
           My List:
         </div>
       </el-row>
@@ -60,6 +60,8 @@
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
+import {getCurrentInstance} from "vue";
+
 export default {
   name: 'App',
   components: {
@@ -67,7 +69,19 @@ export default {
   },
   data : function (){
     return {
-      word_list : [{word: "a"}]
+      word_list : [{word: "a"}],
+      tableData: []
+    }
+  },
+  methods: {
+    handleTableRow(row, event, column) {
+      console.log(row,event,column)
+      let compList = new Object();
+      compList.seedWords = row.seedWords
+      compList.compWords = row.compWords
+      compList.comp = row.comp
+      const {proxy} = getCurrentInstance()
+      proxy.mittBus.emit('comp_key', compList)
     }
   }
 }
@@ -75,6 +89,83 @@ export default {
 <script setup>
 import { ref } from 'vue'
 const input = ref('')
+const tableData = [
+  {
+    seedWords: '中国',
+    compWords: '中国',
+    comp: '0.98',
+  },
+  {
+    seedWords: '中国',
+    compWords: '美国',
+    comp: '0.9',
+  },
+  {
+    seedWords: '中国',
+    compWords: '美国',
+    comp: '0.9',
+  },
+  {
+    seedWords: '中国',
+    compWords: '美国',
+    comp: '0.9',
+  },
+  {
+    seedWords: '中国',
+    compWords: '美国',
+    comp: '0.9',
+  },
+  {
+    seedWords: '中国',
+    compWords: '美国',
+    comp: '0.9',
+  },
+  {
+    seedWords: '中国',
+    compWords: '美国',
+    comp: '0.9',
+  },
+  {
+    seedWords: '中国',
+    compWords: '美国',
+    comp: '0.9',
+  },
+  {
+    seedWords: '中国',
+    compWords: '美国',
+    comp: '0.9',
+  },
+  {
+    seedWords: '中国',
+    compWords: '美国',
+    comp: '0.9',
+  },
+  {
+    seedWords: '中国',
+    compWords: '美国',
+    comp: '0.9',
+  },
+  {
+    seedWords: '中国',
+    compWords: '美国',
+    comp: '0.9',
+  },
+  {
+    seedWords: '中国',
+    compWords: '美国',
+    comp: '0.9',
+  },
+  {
+    seedWords: '中国',
+    compWords: '美国',
+    comp: '0.9',
+  },
+  {
+    seedWords: '中国',
+    compWords: '美国',
+    comp: '0.9',
+  }
+]
 </script>
 
 <style>
@@ -90,6 +181,8 @@ const input = ref('')
 
 body{
   background-color: #f7f8fa;
+  padding: 0;
+  margin: 0;
 }
 
 .search {
@@ -101,12 +194,63 @@ body{
   margin-left: 250px;
 }
 
-.searchBtn{
-  margin-left: 100px;
+#top-color1{
+  box-sizing: content-box;
+  height: 3px;
+  background-color: #434343;
+  margin-top: 20px;
 }
 
-body{
-  padding: 0;
-  margin: 0;
+#top-color2{
+  box-sizing: content-box;
+  height: 3px;
+  background-color: #434343;
+  margin-top: 20px;
 }
+
+#top-color3{
+  box-sizing: content-box;
+  height: 3px;
+  background-color: #434343;
+  margin-top: 20px;
+}
+
+#header1{
+  background-color: #b3d4f5;
+  top: 0;
+  height: 80px;
+  width: auto;
+  margin-top: 0;
+}
+
+#header2{
+  text-align: left;
+  margin-top: 5px;
+  font: 18px bold;
+}
+
+#include-btn{
+  margin-right: 0;
+}
+
+#exclude-btn{
+  margin-left: 0;
+}
+
+.el-input{
+  /*text-align: right;*/
+  height: auto;
+  width: 200px;
+}
+
+#top-color{
+  box-sizing: content-box;
+  height: 3px;
+  background-color: #434343;
+}
+
+p{
+  text-align: left;
+}
+
 </style>
