@@ -75,7 +75,7 @@ export default {
   methods: {
     handleTableRow(row, event, column) {
       console.log(row,event,column)
-      let compList = new Object();
+      let compList = {};
       compList.seedWords = row.seedWords
       compList.compWords = row.compWords
       compList.comp = row.comp
@@ -85,7 +85,15 @@ export default {
     },
     handleDelete(row, event, column) {
       console.log(row,event,column)
-      alert(row.word)
+      let word = row.word
+      for (let i = 0; i < this.word_list.length; i++){
+        console.log(this.word_list[i].word)
+        if(word == this.word_list[i].word){
+          console.log(i)
+          this.word_list.splice(i,i+1)
+          return
+        }
+      }
     }
   }
 }
