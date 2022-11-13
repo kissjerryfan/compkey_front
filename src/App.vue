@@ -59,8 +59,6 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import {getCurrentInstance} from "vue";
 
 export default {
   name: 'App',
@@ -69,8 +67,9 @@ export default {
   },
   data : function (){
     return {
-      word_list : [{word: "a"}],
-      tableData: []
+      word_list : [],
+      tableData: [],
+      click_list : []
     }
   },
   methods: {
@@ -80,8 +79,9 @@ export default {
       compList.seedWords = row.seedWords
       compList.compWords = row.compWords
       compList.comp = row.comp
-      const {proxy} = getCurrentInstance()
-      proxy.mittBus.emit('comp_key', compList)
+      this.click_list.push(compList)
+      let ref = {word : compList.compWords}
+      this.word_list.push(ref)
     }
   }
 }
