@@ -7,6 +7,14 @@ let compKeyService = {
             method: 'post',
             params: param.data || {}
         })
+    },
+
+    sendSelectedWord : function (param){
+        return axios({
+            url: 'http://localhost:8089/message/mylist',
+            method: 'post',
+            params: param
+        })
     }
 }
 
