@@ -8,10 +8,10 @@
   </el-row>
   <el-row class="search">
     <el-col :span="8" class="input">
-      <el-input v-model="input" size="large" placeholder="请输入要搜索的信息" clearable />
+      <el-input v-model="input" id="inputs" size="large" placeholder="请输入要搜索的信息" clearable />
     </el-col>
     <el-col :span="4">
-      <el-button type="primary" size="large" plain>Search</el-button>
+      <el-button type="primary" size="large" id="searchBtn" onclick="searchBtnClick()" plain>Search</el-button>
     </el-col>
     <el-col :span="7">
     </el-col>
@@ -21,7 +21,7 @@
       <div id="top-color1">
 
       </div>
-      <el-table :data="tableData" @row-click="handleTableRow" height="604" style="width: 100%">
+      <el-table :data="tableData" id="mainTable" @row-click="handleTableRow" height="594" style="width: 100%">
         <el-table-column prop="seedWords" label="SeedWords" width="700" />
         <el-table-column prop="compWords" label="CompWords" width="180" />
         <el-table-column prop="comp" label="Comp" width="100"/>
@@ -58,46 +58,6 @@
   </el-row>
 </template>
 
-<script>
-
-export default {
-  name: 'App',
-  components: {
-
-  },
-  data : function (){
-    return {
-      word_list : [],
-      tableData: [],
-      click_list : []
-    }
-  },
-  methods: {
-    handleTableRow(row, event, column) {
-      console.log(row,event,column)
-      let compList = {};
-      compList.seedWords = row.seedWords
-      compList.compWords = row.compWords
-      compList.comp = row.comp
-      this.click_list.push(compList)
-      let ref = {word : compList.compWords}
-      this.word_list.push(ref)
-    },
-    handleDelete(row, event, column) {
-      console.log(row,event,column)
-      let word = row.word
-      for (let i = 0; i < this.word_list.length; i++){
-        console.log(this.word_list[i].word)
-        if(word == this.word_list[i].word){
-          console.log(i)
-          this.word_list.splice(i,i+1)
-          return
-        }
-      }
-    }
-  }
-}
-</script>
 <script setup>
 import { ref } from 'vue'
 const input = ref('')
@@ -177,7 +137,77 @@ const tableData = [
     compWords: '美国',
     comp: '0.9',
   }
-]
+];
+import compKeyService from "@/service/CompkeyService";
+
+window.onload = function () {
+  var searchBtn = document.getElementById("searchBtn")
+  searchBtn.searchBtnClick = async function () {
+    let inputString = document.getElementById("inputs").value
+    let tableContent = document.getElementById("mainTable")
+    console.log(inputString)
+    let param = {statement: inputString}
+    let params = await compKeyService.getCompWordList(param)
+    console.log(param)
+    console.log(params.data)
+    console.log(params.data.length)
+    // for(let i=0;i<params.data.length;i++) {
+    //   console.log(params.data[i].key)
+    //   console.log(params.data[i].value)
+    //   console.log(params.data[i].seedWord)
+    // }
+
+    for(let i=0;i<=params.data.length;i++){
+      // if (tableData == undefined) {
+      //   tableData = new Array();
+      // }
+      let obj = {}
+      obj.seedWords = params.data[i].seedWord
+      obj.compWords = params.data[i].key
+      obj.comp = params.data[i].value
+      tableData.push(obj);
+    }
+  }
+}
+</script>
+<script>
+export default {
+  name: 'App',
+  components: {
+
+  },
+  data : function (){
+    return {
+      word_list : [],
+      tableData: [],
+      click_list : []
+    }
+  },
+  methods: {
+    handleTableRow(row, event, column) {
+      console.log(row,event,column)
+      let compList = {};
+      compList.seedWords = row.seedWords
+      compList.compWords = row.compWords
+      compList.comp = row.comp
+      this.click_list.push(compList)
+      let ref = {word : compList.compWords}
+      this.word_list.push(ref)
+    },
+    handleDelete(row, event, column) {
+      console.log(row,event,column)
+      let word = row.word
+      for (let i = 0; i < this.word_list.length; i++){
+        console.log(this.word_list[i].word)
+        if(word == this.word_list[i].word){
+          console.log(i)
+          this.word_list.splice(i,i+1)
+          return
+        }
+      }
+    }
+  }
+}
 </script>
 
 <style>
@@ -198,8 +228,7 @@ body{
 }
 
 .search {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 20px;
 }
 
 .input{
