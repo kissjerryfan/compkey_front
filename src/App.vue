@@ -50,7 +50,7 @@
       </el-row>
       <el-row>
         <el-empty description="点击关键词以添加到列表" style="width: 350px;" v-if="word_list.length === 0"/>
-        <el-table :data="word_list" stripe style="width: 350px" v-else>
+        <el-table :data="word_list" stripe style="width: 350px" @row-click="handleDelete" v-else>
           <el-table-column prop="word" label="WordList" style="width: content-box"/>
         </el-table>
       </el-row>
@@ -82,6 +82,10 @@ export default {
       this.click_list.push(compList)
       let ref = {word : compList.compWords}
       this.word_list.push(ref)
+    },
+    handleDelete(row, event, column) {
+      console.log(row,event,column)
+      alert(row.word)
     }
   }
 }
