@@ -8,7 +8,7 @@
   </el-row>
   <el-row class="search">
     <el-col :span="8" class="input">
-      <el-input v-model="input" id="inputs" size="large" placeholder="请输入要搜索的信息" clearable />
+      <el-input v-model="inputLeft" id="inputs" size="large" placeholder="请输入要搜索的信息" clearable />
     </el-col>
     <el-col :span="4">
       <el-button type="primary" size="large" id="searchBtn" onclick="searchBtnClick()" plain>Search</el-button>
@@ -22,9 +22,9 @@
 
       </div>
       <el-table :data="tableData" id="mainTable" @row-click="handleTableRow" height="594" style="width: 100%">
-        <el-table-column prop="seedWords" label="SeedWords" width="700" />
-        <el-table-column prop="compWords" label="CompWords" width="180" />
-        <el-table-column prop="comp" label="Comp" width="100"/>
+        <el-table-column prop="seedWords" label="SeedWords" width="390" />
+        <el-table-column prop="compWords" label="CompWords" width="210" />
+        <el-table-column prop="comp" label="Comp" width="420"/>
       </el-table>
     </el-col>
     <el-col :span="1" class="nothing">
@@ -36,7 +36,7 @@
       </div>
       <div>
         <p>过滤竞争词</p>
-        <el-input v-model="input" placeholder="请输入过滤词" clearable style="width: 180px;"/>
+        <el-input v-model="inputRight" placeholder="请输入过滤词" clearable style="width: 180px;"/>
         <el-button type="primary" id="include-btn" style="margin-left: 13px">Include</el-button>
         <el-button type="danger" id="exclude-btn">Exclude</el-button>
       </div>
@@ -60,84 +60,10 @@
 
 <script setup>
 import { ref } from 'vue'
-const input = ref('')
-const tableData = [
-  {
-    seedWords: '中国',
-    compWords: '中国',
-    comp: '0.98',
-  },
-  {
-    seedWords: '中国',
-    compWords: '美国',
-    comp: '0.9',
-  },
-  {
-    seedWords: '中国',
-    compWords: '美国',
-    comp: '0.9',
-  },
-  {
-    seedWords: '中国',
-    compWords: '美国',
-    comp: '0.9',
-  },
-  {
-    seedWords: '中国',
-    compWords: '美国',
-    comp: '0.9',
-  },
-  {
-    seedWords: '中国',
-    compWords: '美国',
-    comp: '0.9',
-  },
-  {
-    seedWords: '中国',
-    compWords: '美国',
-    comp: '0.9',
-  },
-  {
-    seedWords: '中国',
-    compWords: '美国',
-    comp: '0.9',
-  },
-  {
-    seedWords: '中国',
-    compWords: '美国',
-    comp: '0.9',
-  },
-  {
-    seedWords: '中国',
-    compWords: '美国',
-    comp: '0.9',
-  },
-  {
-    seedWords: '中国',
-    compWords: '美国',
-    comp: '0.9',
-  },
-  {
-    seedWords: '中国',
-    compWords: '美国',
-    comp: '0.9',
-  },
-  {
-    seedWords: '中国',
-    compWords: '美国',
-    comp: '0.9',
-  },
-  {
-    seedWords: '中国',
-    compWords: '美国',
-    comp: '0.9',
-  },
-  {
-    seedWords: '中国',
-    compWords: '美国',
-    comp: '0.9',
-  }
-];
+const inputLeft = ref('')
+const inputRight = ref('')
+const tableData = ref([
+]);
 import compKeyService from "@/service/CompkeyService";
 
 window.onload = function () {
@@ -165,7 +91,7 @@ window.onload = function () {
       obj.seedWords = params.data[i].seedWord
       obj.compWords = params.data[i].key
       obj.comp = params.data[i].value
-      tableData.push(obj);
+      tableData.value.push(obj);
     }
   }
 }
