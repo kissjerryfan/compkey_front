@@ -50,8 +50,20 @@
       </el-row>
       <el-row>
         <el-empty description="点击关键词以添加到列表" style="width: 350px;" v-if="word_list.length === 0"/>
-        <el-table :data="word_list" stripe style="width: 350px" @row-click="handleDelete" v-else>
-          <el-table-column prop="word" label="WordList" style="width: content-box"/>
+        <el-table :data="word_list" stripe style="width: 550px" v-else>
+          <el-table-column prop="word" label="WordList" width="100"/>
+          <el-table-column width="200">
+            <template v-slot="scope1">
+              <el-rate v-model="value2[scope1.row.$index]" :colors="colors" size="small"></el-rate>
+            </template>
+          </el-table-column>
+          <el-table-column>
+            <template v-slot="scope">
+              <div style=" text-align: -webkit-center">
+                <el-button type="danger" :icon="Delete" circle @click="handleDelete(scope.$index)"/>
+              </div>
+            </template>
+          </el-table-column>
         </el-table>
       </el-row>
     </el-col>
@@ -59,6 +71,8 @@
 </template>
 
 <script>
+
+import {ref} from "vue";
 
 export default {
   name: 'App',
@@ -69,7 +83,8 @@ export default {
     return {
       word_list : [],
       tableData: [],
-      click_list : []
+      click_list : [],
+      value2 : Array(10)
     }
   },
   methods: {
@@ -83,24 +98,17 @@ export default {
       let ref = {word : compList.compWords}
       this.word_list.push(ref)
     },
-    handleDelete(row, event, column) {
-      console.log(row,event,column)
-      let word = row.word
-      for (let i = 0; i < this.word_list.length; i++){
-        console.log(this.word_list[i].word)
-        if(word == this.word_list[i].word){
-          console.log(i)
-          this.word_list.splice(i,i+1)
-          return
-        }
-      }
+    handleDelete(row_id) {
+      console.log(row_id)
+      this.word_list.splice(row_id, row_id+1)
     }
   }
 }
 </script>
 <script setup>
-import { ref } from 'vue'
+import {Delete} from "@element-plus/icons-vue";
 const input = ref('')
+const colors = ref(['#99A9BF', '#F7BA2A', '#FF9900']) // same as { 2: '#99A9BF', 4: { value: '#F7BA2A', excluded: true }, 5: '#FF9900' }
 const tableData = [
   {
     seedWords: '中国',
