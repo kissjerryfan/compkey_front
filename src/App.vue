@@ -50,11 +50,11 @@
       </el-row>
       <el-row>
         <el-empty description="点击关键词以添加到列表" style="width: 350px;" v-if="word_list.length === 0"/>
-        <el-table :data="word_list" stripe style="width: 550px" @row-click="pageJumping" v-else>
+        <el-table :data="word_list" @cell-click="pageJumping" stripe style="width: 356px" v-else>
           <el-table-column prop="word" label="WordList" width="100"/>
-          <el-table-column width="200">
+          <el-table-column width="150">
             <template v-slot="scope1">
-              <el-rate v-model="value2" :colors="colors" size="small" @click="scoreRate(scope1.$index)"></el-rate>
+              <el-rate v-model="value2" :colors="colors" @change="rateChange(scope1.$index)" size="small" @click="scoreRate(scope1.$index)"></el-rate>
             </template>
           </el-table-column>
           <el-table-column>
@@ -159,12 +159,21 @@ export default {
       console.log(param)
       compkeyService.sendScore(param)
     },
-    pageJumping : function (row){
+    pageJumping : function (row,column,cell,event){
+      console.log(row,column,cell,event)
       let word = toRaw(row).word
-      //let word = toRaw(this.word_list.splice(row_id, row_id + 1))
-      let url = "https://cn.bing.com/search?q=" + word
+      //let word = cell.word
       console.log(word)
-      window.open(url)
+      //let word = toRaw(this.word_list.splice(row_id, row_id + 1))
+      if(column.label == "WordList"){
+        let url = "https://cn.bing.com/search?q=" + word
+        window.open(url)
+      }
+      console.log(word)
+    },
+    rateChange(row_id){
+      console.log(row_id)
+
     }
   }
 }
@@ -226,7 +235,8 @@ body{
 
 #header2{
   text-align: left;
-  margin-top: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   font: 18px bold;
 }
 
