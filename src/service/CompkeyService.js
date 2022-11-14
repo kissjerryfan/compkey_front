@@ -5,7 +5,7 @@ let compKeyService = {
         return axios({
             url: 'http://localhost:8089/message/send',
             method: 'post',
-            params: param || {}
+            params: param
         })
     },
 
