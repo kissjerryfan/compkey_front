@@ -50,7 +50,8 @@
       </el-row>
       <el-row>
         <el-empty description="点击关键词以添加到列表" style="width: 350px;" v-if="word_list.length === 0"/>
-        <el-table :data="word_list" stripe style="width: 550px" v-else>
+        <el-table :data="word_list" stripe style="width: 550px" @row-click="pageJumping" v-else>
+          <template v-slot="main_slope">
           <el-table-column prop="word" label="WordList" width="100"/>
           <el-table-column width="200">
             <template v-slot="scope1">
@@ -64,6 +65,7 @@
               </div>
             </template>
           </el-table-column>
+          </template>
         </el-table>
       </el-row>
     </el-col>
@@ -158,6 +160,13 @@ export default {
       param.score = this.value2
       console.log(param)
       compkeyService.sendScore(param)
+    },
+    pageJumping : function (row){
+      let word = toRaw(row).word
+      //let word = toRaw(this.word_list.splice(row_id, row_id + 1))
+      let url = "https://cn.bing.com/search?q=" + word
+      console.log(word)
+      window.open(url)
     }
   }
 }
