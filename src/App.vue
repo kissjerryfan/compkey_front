@@ -51,7 +51,6 @@
       <el-row>
         <el-empty description="点击关键词以添加到列表" style="width: 350px;" v-if="word_list.length === 0"/>
         <el-table :data="word_list" stripe style="width: 550px" @row-click="pageJumping" v-else>
-          <template v-slot="main_slope">
           <el-table-column prop="word" label="WordList" width="100"/>
           <el-table-column width="200">
             <template v-slot="scope1">
@@ -65,7 +64,6 @@
               </div>
             </template>
           </el-table-column>
-          </template>
         </el-table>
       </el-row>
     </el-col>
@@ -75,12 +73,12 @@
 <script setup>
 import { ref } from 'vue'
 import {Delete} from "@element-plus/icons-vue";
-import { toRaw } from '@vue/reactivity'
+// import { toRaw } from '@vue/reactivity'
 const inputLeft = ref('')
 const inputRight = ref('')
 const tableData = ref([
 ]);
-const scores = ref([])
+// const scores = ref([])
 import compKeyService from "@/service/CompkeyService";
 
 window.onload = function () {
