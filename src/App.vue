@@ -54,7 +54,7 @@
           <el-table-column prop="word" label="WordList" width="100"/>
           <el-table-column width="200">
             <template v-slot="scope1">
-              <el-rate v-model="value2[scope1.row.$index]" :colors="colors" size="small"></el-rate>
+              <el-rate v-model="value2" :colors="colors" size="small" @click="scoreRate(scope1.$index)"></el-rate>
             </template>
           </el-table-column>
           <el-table-column>
@@ -72,10 +72,13 @@
 
 <script setup>
 import { ref } from 'vue'
+import {Delete} from "@element-plus/icons-vue";
+import { toRaw } from '@vue/reactivity'
 const inputLeft = ref('')
 const inputRight = ref('')
 const tableData = ref([
 ]);
+const scores = ref([])
 import compKeyService from "@/service/CompkeyService";
 
 window.onload = function () {
@@ -110,6 +113,9 @@ window.onload = function () {
 </script>
 <script>
 
+import compkeyService from "@/service/CompkeyService";
+import {toRaw} from "@vue/reactivity";
+
 export default {
   name: 'App',
   components: {
@@ -120,7 +126,7 @@ export default {
       word_list : [],
       tableData: [],
       click_list : [],
-      value2 : Array(10)
+      value2 : null
     }
   },
   methods: {
@@ -133,10 +139,25 @@ export default {
       this.click_list.push(compList)
       let ref = {word : compList.compWords}
       this.word_list.push(ref)
+      compkeyService.sendSelectedWord(compList)
     },
     handleDelete(row_id) {
       console.log(row_id)
       this.word_list.splice(row_id, row_id+1)
+    },
+    scoreRate(row_id) {
+      console.log(row_id)
+      console.log(this.value2)
+
+      let param = {}
+      let comp = toRaw(this.click_list.splice(row_id, row_id+1))[0]
+      console.log(comp)
+      param.seed = comp.seedWords
+      param.compkey = comp.compWords
+      param.compDegree = comp.comp
+      param.score = this.value2
+      console.log(param)
+      compkeyService.sendScore(param)
     }
   }
 }
