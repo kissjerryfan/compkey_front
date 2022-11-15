@@ -175,6 +175,14 @@ export default {
     rateChange(row_id){
       console.log(row_id)
 
+    },
+    include(){
+      let word = this.inputRight
+      console.log(word)
+    },
+    exclude(){
+      let word = this.inputRight
+      console.log(word)
     }
   }
 }
