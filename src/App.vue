@@ -39,6 +39,12 @@
         <el-input v-model="inputRight" placeholder="请输入过滤词" clearable style="width: 180px;"/>
         <el-button type="primary" id="include-btn" style="margin-left: 13px" @click="include">Include</el-button>
         <el-button type="danger" id="exclude-btn" @click="exclude">Exclude</el-button>
+        <div v-if="includeFlag === 1">
+          必须包含：{{inputRight}}
+        </div>
+        <div v-else-if="excludeFlag === 1">
+          必须不包含：{{inputRight}}
+        </div>
       </div>
       <div id="top-color3">
 
@@ -127,7 +133,9 @@ export default {
       tableData: [],
       click_list : [],
       value2 : null,
-      inputRight : ""
+      inputRight : "",
+      includeFlag : 0,
+      excludeFlag : 0
     }
   },
   methods: {
@@ -178,10 +186,14 @@ export default {
     },
     include(){
       let word = this.inputRight
+      this.includeFlag = 1
+      this.excludeFlag = 0
       console.log(word)
     },
     exclude(){
       let word = this.inputRight
+      this.excludeFlag = 1
+      this.includeFlag = 0
       console.log(word)
     }
   }
