@@ -37,8 +37,8 @@
       <div>
         <p>过滤竞争词</p>
         <el-input v-model="inputRight" placeholder="请输入过滤词" clearable style="width: 180px;"/>
-        <el-button type="primary" id="include-btn" style="margin-left: 13px">Include</el-button>
-        <el-button type="danger" id="exclude-btn">Exclude</el-button>
+        <el-button type="primary" id="include-btn" style="margin-left: 13px" @click="include">Include</el-button>
+        <el-button type="danger" id="exclude-btn" @click="exclude">Exclude</el-button>
       </div>
       <div id="top-color3">
 
@@ -75,10 +75,10 @@ import { ref } from 'vue'
 import {Delete} from "@element-plus/icons-vue";
 // import { toRaw } from '@vue/reactivity'
 const inputLeft = ref('')
-const inputRight = ref('')
+// const inputRight = ref('')
 const tableData = ref([
 ]);
-// const scores = ref([])
+const colors = ref(['#99A9BF', '#F7BA2A', '#FF9900'])
 import compKeyService from "@/service/CompkeyService";
 
 window.onload = function () {
@@ -126,7 +126,8 @@ export default {
       word_list : [],
       tableData: [],
       click_list : [],
-      value2 : null
+      value2 : null,
+      inputRight : ""
     }
   },
   methods: {
