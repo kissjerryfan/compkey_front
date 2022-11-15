@@ -35,15 +35,15 @@
 
       </div>
       <div>
-        <p>过滤竞争词</p>
+        <p class="filterText">过滤竞争词</p>
         <el-input v-model="inputRight" placeholder="请输入过滤词" clearable style="width: 180px;"/>
         <el-button type="primary" id="include-btn" style="margin-left: 13px" @click="include">Include</el-button>
         <el-button type="danger" id="exclude-btn" @click="exclude">Exclude</el-button>
-        <div v-if="includeFlag === 1">
+        <div class="includeFather" v-if="includeFlag === 1">
           <div class="includeFont">必须包含：</div>
           <div class="include">{{inputRight}} <el-button type="danger" :icon="Delete" circle class="selectedDelete" @click="deleteCondition"/></div>
         </div>
-        <div v-else-if="excludeFlag === 1">
+        <div class="excludeFather" v-else-if="excludeFlag === 1">
           <div class="excludeFont">必须不包含：</div>
           <div class="exclude">{{inputRight}} <el-button type="danger" :icon="Delete" circle class="selectedDelete" @click="deleteCondition"/></div>
         </div>
@@ -253,6 +253,10 @@ export default {
   padding-top: 0;
 }
 
+.filterText {
+  margin-left: 2px;
+}
+
 body{
   background-color: #f7f8fa;
   padding: 0;
@@ -265,6 +269,14 @@ body{
 
 .input{
   margin-left: 250px;
+}
+
+.includeFather {
+  display: table;
+}
+
+.excludeFather {
+  display: table;
 }
 
 #top-color1{
@@ -331,27 +343,35 @@ p{
   background-color: #79bbff;
   height: 40px;
   width: 340px;
-  margin-left: 12px;
+  margin-left: 4px;
   margin-top: 5px;
   border-radius: 5px;
   color: #000000;
   text-align: left;
   padding-left: 10px;
   padding-top: 15px;
+  line-height: 27px;
 }
 
 .includeFont{
   color: #97c0f2;
   text-align: left;
-  padding-left: 10px;
+  padding-left: 2px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
+.selectedDelete {
+  position: absolute;
+  top: 162px;
+  right: 0px;
+}
 
 .exclude{
   background-color: #ffccd5;
   height: 40px;
   width: 340px;
-  margin-left: 12px;
+  margin-left: 4px;
   margin-top: 5px;
   border-radius: 5px;
   color: #000000;
