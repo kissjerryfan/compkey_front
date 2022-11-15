@@ -21,7 +21,7 @@
       <div id="top-color1">
 
       </div>
-      <el-table :data="tableData" id="mainTable" @row-click="handleTableRow" height="594" style="width: 100%">
+      <el-table :data="tableData" lazy="false" id="mainTable" @row-click="handleTableRow" height="594" style="width: 100%">
         <el-table-column prop="seedWords" label="SeedWords" width="390" />
         <el-table-column prop="compWords" label="CompWords" width="210" />
         <el-table-column prop="comp" label="Comp" width="420"/>
@@ -103,7 +103,9 @@ window.onload = function () {
     //   console.log(params.data[i].value)
     //   console.log(params.data[i].seedWord)
     // }
-
+    if(tableData.value != null) {
+      tableData.value.splice(0,tableData.value.length)
+    }
     for(let i=0;i<=params.data.length;i++){
       // if (tableData == undefined) {
       //   tableData = new Array();
@@ -189,12 +191,29 @@ export default {
       this.includeFlag = 1
       this.excludeFlag = 0
       console.log(word)
+      console.log(toRaw(this.tableData).length)
+      for(let i=0;i<toRaw(this.tableData).length;i++){
+        console.log(toRaw(this.tableData[i]))
+        // console.log(toRaw(this.tableData[i]).value)
+        if(toRaw(this.tableData[i]).compWords != word) {
+          toRaw(this.tableData).splice(i,i+1)
+        }
+        console.log(this.tableData)
+      }
     },
     exclude(){
       let word = this.inputRight
       this.excludeFlag = 1
       this.includeFlag = 0
       console.log(word)
+      for(let i=0;i<toRaw(this.tableData).length;i++){
+        console.log(toRaw(this.tableData[i]))
+        // console.log(toRaw(this.tableData[i]).value)
+        if(toRaw(this.tableData[i]).compWords == word) {
+          toRaw(this.tableData).splice(i,i+1)
+        }
+        console.log(this.tableData)
+      }
     }
   }
 }
