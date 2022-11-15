@@ -40,10 +40,12 @@
         <el-button type="primary" id="include-btn" style="margin-left: 13px" @click="include">Include</el-button>
         <el-button type="danger" id="exclude-btn" @click="exclude">Exclude</el-button>
         <div v-if="includeFlag === 1">
-          必须包含：{{inputRight}}
+          <div class="includeFont">必须包含：</div>
+          <div class="include">{{inputRight}}</div>
         </div>
         <div v-else-if="excludeFlag === 1">
-          必须不包含：{{inputRight}}
+          <div class="excludeFont">必须不包含：</div>
+          <div class="exclude">{{inputRight}}</div>
         </div>
       </div>
       <div id="top-color3">
@@ -302,6 +304,45 @@ body{
 
 p{
   text-align: left;
+}
+
+.include{
+  background-color: #79bbff;
+  height: 40px;
+  width: 340px;
+  margin-left: 12px;
+  margin-top: 5px;
+  border-radius: 5px;
+  color: #000000;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 15px;
+}
+
+.includeFont{
+  color: #97c0f2;
+  text-align: left;
+  padding-left: 10px;
+}
+
+
+.exclude{
+  background-color: #ffccd5;
+  height: 40px;
+  width: 340px;
+  margin-left: 12px;
+  margin-top: 5px;
+  border-radius: 5px;
+  color: #000000;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 15px;
+}
+
+.excludeFont{
+  color: #ec8497;
+  text-align: left;
+  padding-left: 10px;
 }
 
 </style>
