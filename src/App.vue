@@ -41,11 +41,11 @@
         <el-button type="danger" id="exclude-btn" @click="exclude">Exclude</el-button>
         <div v-if="includeFlag === 1">
           <div class="includeFont">必须包含：</div>
-          <div class="include">{{inputRight}}</div>
+          <div class="include">{{inputRight}} <el-button type="danger" :icon="Delete" circle class="selectedDelete" @click="deleteCondition"/></div>
         </div>
         <div v-else-if="excludeFlag === 1">
           <div class="excludeFont">必须不包含：</div>
-          <div class="exclude">{{inputRight}}</div>
+          <div class="exclude">{{inputRight}} <el-button type="danger" :icon="Delete" circle class="selectedDelete" @click="deleteCondition"/></div>
         </div>
       </div>
       <div id="top-color3">
@@ -140,7 +140,8 @@ export default {
       inputRight : "",
       includeFlag : 0,
       excludeFlag : 0,
-      num : 0
+      num : 0,
+      tempTableData : []
     }
   },
   methods: {
@@ -193,15 +194,18 @@ export default {
       let word = this.inputRight
       this.includeFlag = 1
       this.excludeFlag = 0
-      console.log(word)
-      console.log(toRaw(this.tableData).length)
+      // console.log(toRaw(this.tableData).length)
+      this.tempTableData = []
+      for(let i=0;i<toRaw(this.tableData).length;i++){
+        this.tempTableData.push(toRaw(this.tableData)[i])
+      }
       for(let i=0;i<toRaw(this.tableData).length;i++){
         console.log(toRaw(this.tableData[i]))
         // console.log(toRaw(this.tableData[i]).value)
         if(toRaw(this.tableData[i]).compWords != word) {
           toRaw(this.tableData).splice(i,i+1)
         }
-        console.log(this.tableData)
+        // console.log(this.tableData)
       }
       this.num++;
     },
@@ -209,16 +213,30 @@ export default {
       let word = this.inputRight
       this.excludeFlag = 1
       this.includeFlag = 0
-      console.log(word)
+      this.tempTableData = []
       for(let i=0;i<toRaw(this.tableData).length;i++){
-        console.log(toRaw(this.tableData[i]))
+        this.tempTableData.push(toRaw(this.tableData)[i])
+      }
+      // console.log(word)
+      for(let i=0;i<toRaw(this.tableData).length;i++){
+        // console.log(toRaw(this.tableData[i]))
         // console.log(toRaw(this.tableData[i]).value)
         if(toRaw(this.tableData[i]).compWords == word) {
           toRaw(this.tableData).splice(i,i+1)
         }
-        console.log(this.tableData)
+        // console.log(this.tableData)
       }
+      console.log(this.tempTableData)
       this.num++;
+    },
+    deleteCondition(){
+      this.includeFlag = 0
+      this.excludeFlag = 0
+      this.tableData = []
+      for(let i=0;i<toRaw(this.tempTableData).length;i++){
+        this.tableData.push(toRaw(this.tempTableData)[i])
+      }
+      this.inputRight = ""
     }
   }
 }
@@ -346,6 +364,11 @@ p{
   color: #ec8497;
   text-align: left;
   padding-left: 10px;
+}
+
+.selectedDelete{
+  float: right;
+  margin-right: 10px;
 }
 
 </style>
