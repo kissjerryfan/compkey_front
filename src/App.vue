@@ -21,7 +21,7 @@
       <div id="top-color1">
 
       </div>
-      <el-table :data="tableData" lazy="false" id="mainTable" @row-click="handleTableRow" height="594" style="width: 100%">
+      <el-table :data="tableData" :key="num" id="mainTable" @row-click="handleTableRow" height="594" style="width: 100%">
         <el-table-column prop="seedWords" label="SeedWords" width="390" />
         <el-table-column prop="compWords" label="CompWords" width="210" />
         <el-table-column prop="comp" label="Comp" width="420"/>
@@ -137,7 +137,8 @@ export default {
       value2 : null,
       inputRight : "",
       includeFlag : 0,
-      excludeFlag : 0
+      excludeFlag : 0,
+      num : 0
     }
   },
   methods: {
@@ -200,6 +201,7 @@ export default {
         }
         console.log(this.tableData)
       }
+      this.num++;
     },
     exclude(){
       let word = this.inputRight
@@ -214,6 +216,7 @@ export default {
         }
         console.log(this.tableData)
       }
+      this.num++;
     }
   }
 }
